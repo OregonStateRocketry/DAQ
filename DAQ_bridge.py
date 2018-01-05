@@ -1,4 +1,4 @@
-import serial, datetime, time, csv
+import serial, time, csv
 # establish connection to the serial port that your arduino
 # is connected to.
 ser = serial.Serial('COM3', 9600, timeout=1)
@@ -13,7 +13,7 @@ with open(filename, 'w', newline='') as fp:
         # reads the incoming data and converts it from b'xxx'r\n\ to a str
         line = ser.readline()
         data = line.strip().decode()
-        now = datetime.datetime.now()
+        now = time.time()
 
         # write to file=======================
         csvRow = [now, data]
