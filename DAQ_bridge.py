@@ -5,23 +5,24 @@ ser = serial.Serial('COM3', 9600, timeout=1)
 print("connected to: " + ser.portstr)
 t = 0
 filename = 'dataFile.csv'
-tic = time.time()
+
 with open(filename, 'w', newline='') as fp:
+    tic = time.time()
     print("writing to", filename)
     while (1):
         t = t + 1
         # reads the incoming data and converts it from b'xxx'r\n\ to a str
         line = ser.readline()
         data = line.strip().decode()
-        now = time.time()
+        now = time.time() - tic
 
         # write to file=======================
         csvRow = [now, data]
         wr = csv.writer(fp)
         wr.writerow(csvRow)
-
-        if t == 1000:
+        if now > 10:
             break
 toc = time.time() - tic
 print("Data collection complete.",toc,"seconds elapsed.")
 ser.close()
+
