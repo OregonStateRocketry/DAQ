@@ -22,14 +22,14 @@ with open(filename, 'w',newline='', errors='replace') as fp:
         t = t + 1
         # reads the incoming data and converts it from b'xxx'r\n\ to a str        
         line = ser.readline()
-        data = line.strip().decode(errors='ignore').strip(",")
+        data = line.strip().decode(errors='ignore').split(",")
         now = time.time() - tic
         # write to file=======================
         if t > 5:
             csvRow = [now,data[0],data[1]]
             wr = csv.writer(fp)
             wr.writerow(csvRow)
-
+            print(len(data))
         if now > 3:
             break
 toc = time.time() - tic
