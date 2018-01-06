@@ -29,8 +29,8 @@ with open(filename, 'w',newline='', errors='replace') as fp:
             csvRow = [now,data[0],data[1]]
             wr = csv.writer(fp)
             wr.writerow(csvRow)
-            print(len(data))
-        if now > 3:
+            print(csvRow)
+        if now > 10:
             break
 toc = time.time() - tic
 print("Data collection complete.",toc,"seconds elapsed.")
