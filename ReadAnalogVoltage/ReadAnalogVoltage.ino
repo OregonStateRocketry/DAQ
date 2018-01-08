@@ -7,13 +7,13 @@ void setup() {
 void loop() {
   // read the input on analog pin 0:
   int loadCellVal = analogRead(A0);
-  int PTvalmin = analogRead(A7);
-  int PTvalmax = analogRead(A6);
+  int PTval = analogRead(A7);
   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
   float loadCellVoltage = loadCellVal * (5.0 / 1023.0);
-  float PTvoltage = (PTvalmax - PTvalmin) * (5.0 / 1023.0);
+  float PTvoltage = (PTval) * (5.0 / 1023.0);
+  float pressure_psi = (1132.08*(voltage) - 652.83);
   // print out the value you read:
   Serial.print(loadCellVoltage);
   Serial.print(",");
-  Serial.println(PTvoltage);
+  Serial.println(pressure_psi);
 }
