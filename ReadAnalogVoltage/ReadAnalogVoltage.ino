@@ -10,10 +10,11 @@ void loop() {
   int PTval = analogRead(A7);
   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
   double loadCellVoltage = loadCellVal * (5.0 / 1023.0);
+  double loadCellLbf = (402.88)*(loadCellVoltage) - 43.59);
   double PTvoltage = (PTval) * (5.0 / 1023.0);
-  double pressure_psi = (1132.08*(PTvoltage) - 652.83);
+  double pressure_psi = (1225.4*(PTvoltage) - 806.075);
   // print out the value you read:
-  Serial.print(loadCellVoltage);
+  Serial.print(loadCellLbf);
   Serial.print(",");
   Serial.println(pressure_psi);
 }
