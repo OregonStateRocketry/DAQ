@@ -20,17 +20,16 @@ with open(filename, 'w',newline='', errors='replace') as fp:
     print("writing to", filename)
     while (1):
         t = t + 1
-        # reads the incoming data and converts it from b'xxx'r\n\ to a str        
+        # reads the incoming data and converts it from b'xxx'r\n\ to a str
         line = ser.readline()
         data = line.strip().decode(errors='ignore').split(",")
         now = time.time() - tic
         # write to file=======================
         if t > 5:
-		try: 
-            		csvRow = [now,data[0],data[1]]
-		except IndexError:
-			pass
-		continue
+            try:
+                csvRow = [now,data[0],data[1]]
+            except IndexError:
+                csvRow = 'null'
             wr = csv.writer(fp)
             wr.writerow(csvRow)
             print(csvRow)
@@ -39,4 +38,3 @@ with open(filename, 'w',newline='', errors='replace') as fp:
 toc = time.time() - tic
 print("Data collection complete.",toc,"seconds elapsed.")
 ser.close()
-
