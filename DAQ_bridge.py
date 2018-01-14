@@ -25,7 +25,10 @@ with open(filename, 'w', newline='') as fp:
         now = time.time() - tic
         # write to file=======================
         if t > 5:
-            csvRow = [now,data[0],data[1]]
+            try:
+                csvRow = [now,data[0],data[1]]
+            except IndexError:
+                csvRow = 'null'
             wr = csv.writer(fp)
             wr.writerow(csvRow)
         if now > 3:
