@@ -1,3 +1,3 @@
 # DAQ
 
-Files to receive serial data from an arduino and write it to a .csv. Used to monitor load cell and pressure data for Oregon State Rocketry capstone. 
+This repository contains the necessary files to run the data acquisition system employed by Oregon State Rocketry teams. The system used a load cell and a pressure transducer. The sensors output a very small voltage which is read by an Arduino Mega. The data is sent through serial and parsed by the python script DAQ_bridge.py. The 'PI' file is for use with unix systems where as the other is for windows. The dataAnalysis.py file analyzes the csv files and filters out non numeric values and only determines which data is important from the test. A 10 second window around the test is saved and that windows is written to a new .csv.
