@@ -2,13 +2,13 @@ import csv
 import time as unixTime #becasue time is being used by the data
 import numpy as np
 tic = unixTime.time()
-filename = 'Jan14_SOS_0.4531' # change this as needed
+filename = 'ESRA_LandP_3_3' # change this as needed
 ext = '.csv' # file extension
+window = 15000 # keeps data around the peak load with the window being 10 seconds
 data = []  # setting up empty arrays
 time = []
 load = []
 pressure = []
-window = 10 # keeps data around the peak load with the window being 10 seconds
 with open(filename+ext) as fp:
     for row in csv.reader(fp):
         time.append(np.array(row[0])) # separating the data into individual vectors
@@ -18,9 +18,9 @@ with open(filename+ext) as fp:
 print("data broken into vectors")
 print("finding peak load and deleting data around a",window,"second window")
 
-t1 = float(time[0])
-t2 = float(time[1])
-timeStep = round(t2 - t1,3) # time step calculation
+t1 = float(time[19])
+t2 = float(time[20])
+timeStep = round(t2 - t1, 3) # time step calculation
 
 print("data has an approximate time step of "+str(timeStep)+" seconds")
 
